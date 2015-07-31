@@ -17,7 +17,7 @@ export function handler (event, context) {
         if (err) {
             context.fail(err);
         } else {
-            context.success(res);
+            context.succeed(res);
         }
     });
 };
