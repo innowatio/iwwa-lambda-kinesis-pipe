@@ -31,7 +31,7 @@ describe("`handler`", function () {
         };
         handler(kinesisEvent);
         expect(kinesis.putRecord).to.have.been.calledWith({
-            Data: new Buffer("data"),
+            Data: new Buffer("data").toString(),
             PartitionKey: "pipe",
             StreamName: "STREAM_NAME"
         });

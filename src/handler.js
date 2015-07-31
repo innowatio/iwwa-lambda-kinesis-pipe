@@ -9,7 +9,7 @@ var kinesis = new Kinesis({
 
 export default function handler (event, context) {
     var params = {
-        Data: new Buffer(event.Records[0].kinesis.data, "base64"),
+        Data: new Buffer(event.Records[0].kinesis.data, "base64").toString(),
         PartitionKey: "pipe",
         StreamName: process.env.TARGET_STREAM_NAME
     };
