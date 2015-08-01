@@ -8,6 +8,7 @@ var kinesis = new Kinesis({
 });
 
 export default function handler (event, context) {
+    console.log(new Buffer(event.Records[0].kinesis.data, "base64").toString());
     var params = {
         Data: new Buffer(event.Records[0].kinesis.data, "base64").toString(),
         PartitionKey: "pipe",
