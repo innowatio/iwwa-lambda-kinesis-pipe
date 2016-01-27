@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/innowation/iwwa-lambda-kinesis-pipe.git"
+    "url": "https://github.com/lk-architecture/iwwa-lambda-kinesis-pipe.git"
   },
   "dependencies": {
     "aws-sdk": "^2.1.42",
@@ -17,7 +17,7 @@
     "babel-plugin-rewire": "^0.1.7",
     "chai": "^3.1.0",
     "chai-as-promised": "^5.1.0",
-    "coveralls": "^2.11.2",
+    "codecov": "^1.0.1",
     "eslint": "^1.0.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
@@ -31,7 +31,7 @@
     "sinon-chai": "^2.8.0"
   },
   "scripts": {
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "codecov": "codecov",
     "test": "gulp test",
     "lint": "gulp lint",
     "deploy": "gulp deploy",
