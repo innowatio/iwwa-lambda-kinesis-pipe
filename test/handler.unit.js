@@ -25,14 +25,24 @@ describe("`handler`", function () {
         var kinesisEvent = {
             Records: [{
                 kinesis: {
-                    data: new Buffer("data").toString("base64")
+                    data: new Buffer(JSON.stringify({
+                        id: "id",
+                        source: {
+                            kinesisPartitionKey: "kinesisPartitionKey"
+                        }
+                    })).toString("base64")
                 }
             }]
         };
         handler(kinesisEvent);
         expect(kinesis.putRecord).to.have.been.calledWith({
-            Data: new Buffer("data").toString(),
-            PartitionKey: "pipe",
+            Data: JSON.stringify({
+                id: "id",
+                source: {
+                    kinesisPartitionKey: "kinesisPartitionKey"
+                }
+            }),
+            PartitionKey: "kinesisPartitionKey",
             StreamName: "STREAM_NAME"
         });
     });

@@ -7,10 +7,16 @@ var kinesis = new Kinesis({
     apiVersion: "2013-12-02"
 });
 
-export default function handler (event, context) {
+export default function handler (kinesisEvent, context) {
+    var applicationEvent = JSON.parse(
+        new Buffer(kinesisEvent.Records[0].kinesis.data, "base64").toString()
+    );
     var params = {
-        Data: new Buffer(event.Records[0].kinesis.data, "base64").toString(),
-        PartitionKey: "pipe",
+        Data: JSON.stringify(applicationEvent),
+        PartitionKey: (
+            applicationEvent.source &&
+            applicationEvent.source.kinesisPartitionKey
+        ) || "pipe",
         StreamName: process.env.TARGET_STREAM_NAME
     };
     if (process.env.DEBUG) {
