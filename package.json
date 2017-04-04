@@ -31,10 +31,10 @@
     "sinon-chai": "^2.8.0"
   },
   "scripts": {
+    "build": "babel src -d bundle",
     "codecov": "codecov",
     "test": "gulp test",
     "lint": "gulp lint",
-    "deploy": "gulp deploy",
     "dev": "gulp"
   },
   "author": "Team Wattellina <wattellina@mondora.com>",
